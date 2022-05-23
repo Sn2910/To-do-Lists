@@ -8,77 +8,260 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
     <title>ToDo LISt</title>
 </head>
 
 <body>
-    <div class="row  justify-content-center px-1 mb-2 text-center mt-5  ">
-        <div class="col-10 align-items-center ">
-            <h1 >Todolist</h1>
-           
-                    <p>Click on the Todo button to add a new Task:</p>
-
-                    <div class="tab ml justify-content-between">
-                        <button class="tablinks" onclick="openCity(event, 'Todo')">Todo</button>
-                        <button class="tablinks" onclick="openCity(event, 'Process')">In process tasks</button>
-                        <button class="tablinks" onclick="openCity(event, 'Done')">Done</button>
+    <div class="container-fluid">
+        <div class="row mt-3 mb-3 text-center">
+            <div class="col-sm-6">
+                <h1>Enter Your <b> Task</b></h1>
+            </div>
+            <div class="col-sm-6 text-center mt-1">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTask">
+                    <i class="fa-solid fa-circle-plus"></i> Add Task
+                </button>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header  bg-danger">
+                        To Do
                     </div>
-
-                    <div id="Todo" class="tabcontent">
-
-                        <p>Add your task </p>
-                        <div class="col">
-                            <div class="card-body py-4 px-4 px-md-5">
-                                <div class="pb-2">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex flex-row align-items-center">
-                                                <input type="text" class="form-control form-control-lg"
-                                                    id="exampleFormControlInput1" placeholder="Add new...">
-                                                <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i
-                                                        class="fas fa-calendar-alt fa-lg me-3"></i></a>
-                                                <div>
-                                                    <button type="button" class="btn btn-primary">Add</button>
-                                                </div>
-                                            </div>
-                                            <div id="task-list">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="card-body">
+                        <div class="card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer text-left">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#editTask">
+                                    <i class="fa-solid fa-pen"></i> Edit
+                                </button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteTask">
+                                    <i class="fa-solid fa-calendar-xmark"></i> Delete
+                                </button>
                             </div>
                         </div>
-                    </div>
 
-                    <div id="Process" class="tabcontent">
-                        <h3>Paris</h3>
-                        <p>Paris is the capital of France.</p>
-                    </div>
+                        <!--   <h5 class="card-title">Special title treatment</h5>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
 
-                    <div id="Done" class="tabcontent">
-                        <h3>Tokyo</h3>
-                        <p>Tokyo is the capital of Japan.</p>
                     </div>
+                    <div class="card-body">
+                        <div class="card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer text-left">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#editTask">
+                                    <i class="fa-solid fa-pen"></i> Edit
+                                </button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteTask">
+                                    <i class="fa-solid fa-calendar-xmark"></i> Delete
+                                </button>
+                            </div>
+                        </div>
 
+                        <!--   <h5 class="card-title">Special title treatment</h5>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        In Progress
+                    </div>
+                    <div class="card-body">
+                        <div class="card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                        <!--   <h5 class="card-title">Special title treatment</h5>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        Completed
+                    </div>
+                    <div class="card-body">
+                        <!--   <h5 class="card-title">Special title treatment</h5>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--=======Modal for Add Task==========-->
+    <div class="modal" tabindex="-1" id="addTask">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTaskForm">Add New Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="task-title">Title</label>
+                                <input type="text" class="form-control" id="task-title"
+                                    placeholder="Enter the title of your Task">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-status">Select Status</label>
+                                <select class="form-control" id="task-status">
+                                    <option value="todo">To Do</option>
+                                    <option value="progress">In progress</option>
+                                    <option value="done">Completed</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="task-description">Description</label>
+                            <textarea class="form-control" id="task-description" rows="3"></textarea>
+                        </div>
+                </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success"><i class="fa-solid fa-circle-plus"></i> Add</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
+                            class="fa-solid fa-rectangle-xmark"></i> Close</button>
 
                 </div>
             </div>
-
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
-        crossorigin="anonymous"></script>
-    <script src="./assets/app.js"></script>
+    <!--=======Modal for Edit Task==========-->
+    <div class="modal" tabindex="-1" id="editTask">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editTaskForm">Edit Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="task-title">Title</label>
+                                <input type="text" class="form-control" id="task-title"
+                                    placeholder="Enter the title of your Task">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-status">Select Status</label>
+                                <select class="form-control" id="task-status">
+                                    <option value="todo">To Do</option>
+                                    <option value="progress">In progress</option>
+                                    <option value="done">Completed</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="task-description">Description</label>
+                            <textarea class="form-control" id="task-description" rows="3"></textarea>
+                        </div>
+                        <div class="form-group text-end">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#addComment"><i class="fa-solid fa-circle-plus"></i> Add
+                                Comment</button>
+                        </div>
+                </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
+                            class="fa-solid fa-rectangle-xmark"></i> Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=======Modal for Comment ==========-->
+    <div class="modal" tabindex="-1" id="addComment">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCommentForm">Add New Comment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="form-group mb-3">
+                            <label for="task-description">Comment</label>
+                            <textarea class="form-control" id="task-description" rows="3"></textarea>
+                        </div>
+
+
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success"><i class="fa-solid fa-circle-plus"></i>
+                            Add</button>
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
+                                class="fa-solid fa-rectangle-xmark"></i> Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--=======Modal for Delete ==========-->
+        <div class="modal" tabindex="-1" id="deleteTask">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteTaskForm">Delete Task</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card border-secondary mb-3" >
+                            <div class="card-header">Are you sure you want to delete the task?</div>
+                            <div class="card-body text-secondary">
+                              <h5 class="card-title">Secondary card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                          </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger"> <i class="fa-solid fa-calendar-xmark"></i> Delete</button>
+                            <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
+                                    class="fa-solid fa-rectangle-xmark"></i> Close
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+                integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+                integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+                crossorigin="anonymous"></script>
+            <script src="./assets/app.js"></script>
 </body>
 
 </html>
