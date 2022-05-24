@@ -1,66 +1,61 @@
+let taskTitle = document.getElementById('task-title')
+let taskStatus = document.getElementById('task-status')
+let taskDescription = document.getElementById('task-description')
+let addtaskbtn = document.getElementById('addtaskbtn')
+let dt = new Date()
+
+console.log(dt)
 
 
+addtaskbtn.addEventListener("click", function(){
+  taskTitleVal = taskTitle.value
+  taskStatusVal = taskStatus.value
+  taskDescriptionVal = taskDescription.value
+  const newObj = {'title':taskTitleVal, 'task-status': taskStatusVal,'task-decr':taskDescriptionVal}
+      let webtask = localStorage.getItem("localtask");
+      if(webtask == null){
+         let taskObj = [];
+      }
+      else{
+          taskObj = JSON.parse(webtask);
+      }
+      taskObj.push(newObj);
+      localStorage.setItem("localtask", JSON.stringify(taskObj));
+      console.log(localStorage)
+      showContent();
  
-const divElement = document.getElementById('input-form')
-const inputElement = document.getElementById('input-task');
-const inputArray = [];
-const newArray = inputArray.push(inputElement);
-console.log(inputElement);
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const task = input.value;
-
-  const task_el = document.createElement('div');
-  task_el.classList.add('task');
-
-  const task_content_el = document.createElement('div');
-  task_content_el.classList.add('content');
-
-  task_el.appendChild(task_content_el);
-
-  const task_input_el = document.createElement('input');
-  task_input_el.classList.add('text');
-  task_input_el.type = 'text';
-  task_input_el.value = task;
-  task_input_el.setAttribute('readonly', 'readonly');
-
-  task_content_el.appendChild(task_input_el);
-
-  const task_actions_el = document.createElement('div');
-  task_actions_el.classList.add('actions');
+})
+function showContent(){
   
-  const task_edit_el = document.createElement('button');
-  task_edit_el.classList.add('edit');
-  task_edit_el.innerText = 'Edit';
+  let webtask = localStorage.getItem("localtask");
+  if(webtask == null){
+     let taskObj = [];
+  }
+  else{
+      taskObj = JSON.parse(webtask);
+  }
+  let taskArrayElemenet = ''
+  let addTaskList = document.getElementById('addTaskList')
 
-  const task_delete_el = document.createElement('button');
-  task_delete_el.classList.add('delete');
-  task_delete_el.innerText = 'Delete';
+  taskObj.forEach((val) =>{
+    taskArrayElemenet += `<div class="card">
+    <div class="card-header"><i class="fa-solid fa-calendar-days"></i><i class="fa-solid fa-arrow-right-arrow-left"></i><i class="fa-solid fa-comment"></i></div>
+    <div class="card-body"><h6>${val}</h6></div>
+    <div class="card-footer text-left">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+            data-bs-target="#editTask">
+            <i class="fa-solid fa-pen"></i> Edit
+        </button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+            data-bs-target="#deleteTask">
+            <i class="fa-solid fa-calendar-xmark"></i> Delete
+        </button>
+    </div>
+</div>`
 
-  task_actions_el.appendChild(task_edit_el);
-  task_actions_el.appendChild(task_delete_el);
+  })
+ 
 
-  task_el.appendChild(task_actions_el);
-
-  list_el.appendChild(task_el);
-
-  input.value = '';
-
-  task_edit_el.addEventListener('click', (e) => {
-    if (task_edit_el.innerText.toLowerCase() == "edit") {
-      task_edit_el.innerText = "Save";
-      task_input_el.removeAttribute("readonly");
-      task_input_el.focus();
-    } else {
-      task_edit_el.innerText = "Edit";
-      task_input_el.setAttribute("readonly", "readonly");
-    }
-  });
-
-  task_delete_el.addEventListener('click', (e) => {
-    list_el.removeChild(task_el);
-  });
-});
-});
+addTaskList.innerHTML = taskArrayElemenet;
+}
