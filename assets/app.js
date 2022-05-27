@@ -120,7 +120,7 @@ function showdeleteTask(index) {
   cardbody.innerHTML = `<p> Title: ${taskObj[index].title} </p>
 <p> Status: ${taskObj[index].status} </p>
 <p> Description:${taskObj[index].decr} </p>`
-  /* console.log(cardbody.innerHTML) */
+
 
   let modaldetebtn = document.getElementById('modaldetebtn')
   modaldetebtn.addEventListener("click", () => {
