@@ -2,32 +2,9 @@ let taskTitle = document.getElementById('task-title')
 let taskStatus = document.getElementById('task-status')
 let taskDescription = document.getElementById('task-description')
 let addtaskbtn = document.getElementById('addtaskbtn')
-let dt = new Date()
+let dt = new Date();
 
 
-addtaskbtn.addEventListener("click", function () {
-
-  taskTitleVal = taskTitle.value
-  taskStatusVal = taskStatus.value
-  taskDescriptionVal = taskDescription.value
-  const newObj = { 'title': taskTitleVal, 'status': taskStatusVal, 'decr': taskDescriptionVal }
-  if (taskTitleVal.trim() != 0) {
-
-    let webtask = localStorage.getItem("localtask");
-    /*  console.log(webtask) */
-    if (webtask == null) {
-      taskObj = [];
-    }
-    else {
-      taskObj = JSON.parse(webtask);
-    }
-    taskObj.push(newObj);
-    localStorage.setItem("localtask", JSON.stringify(taskObj));
-    /*  console.log(localStorage) */
-  }
-
-  showContent();
-})
 function showContent() {
 
   let webtask = localStorage.getItem("localtask");
@@ -39,14 +16,14 @@ function showContent() {
   }
   let taskArrayElemenet = ''
   let addTaskList = document.getElementById('addTaskList')
-  let dt = new Date()
+  /*  let dt = new Date() */
   taskObj.forEach((val, index) => {
-  
+
 
     /* taskStatusVal = taskStatus.value */
-      console.log(index) 
+    console.log(index)
     taskArrayElemenet += `<div class="card">
-    <div class="card-header"><i class="fa-solid fa-calendar-days"></i><i class="fa-solid fa-arrow-right-arrow-left"></i><i class="fa-solid fa-comment"></i></div>
+    <div class="card-header"><i class="fa-solid fa-calendar-days">${val.time}</i><i class="fa-solid fa-arrow-right-arrow-left"></i><i class="fa-solid fa-comment"></i></div>
     <div class="card-body"><h6>${val.title}</h6><p>${val.taskdecr}</p></div>
     <div class="card-footer text-left">
         <button type="button" class="btn btn-success" data-bs-toggle="modal"
@@ -61,10 +38,42 @@ function showContent() {
 </div>`
 
   })
+  
 
   addTaskList.innerHTML = taskArrayElemenet;
 
 }
+
+showContent("all");
+
+
+addtaskbtn.addEventListener("click", function () {
+
+  taskTitleVal = taskTitle.value
+  taskStatusVal = taskStatus.value
+  taskDescriptionVal = taskDescription.value
+  const newObj = { 'title': taskTitleVal, 'status': taskStatusVal, 'decr': taskDescriptionVal, 'time': dt }
+  if (taskTitleVal.trim() != 0) {
+
+    let webtask = localStorage.getItem("localtask");
+    /*  console.log(webtask) */
+    if (webtask == null) {
+      taskObj = [];
+    }
+    else {
+      taskObj = JSON.parse(webtask);
+    }
+    taskObj.push(newObj);
+    localStorage.setItem("localtask", JSON.stringify(taskObj));
+    /*  console.log(localStorage) */
+  }
+  taskTitle.value = ''
+  
+  taskDescription.value = ''
+
+  showContent();
+})
+
 
 function edit(ind) {
   console.log(ind)
@@ -77,13 +86,13 @@ function edit(ind) {
   let editStatus = document.getElementById('edit-status')
   let addcomment = document.getElementById('addcomment')
   console.log(taskTitle)
-  
-  
+
+
   let saveindex = document.getElementById('saveindex')
   saveindex.value = ind
   /* console.log(saveindex.value) */
   editTitle.value = taskObj[ind].title
-   console.log(editTitle.value) 
+  console.log(editTitle.value)
   editStatus.value = taskObj[ind].status
   editDescription.value = taskObj[ind].decr
 }
