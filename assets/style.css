@@ -1,4 +1,21 @@
 
 body{
-  background-image: url();
+  background-image: url("./wallpaperflare.com_wallpaper_1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-position: center;
+}
+.header-text {
+  color: rgb(238, 240, 243);
+  margin: 2rem auto;
+}
+.card {
+  background-color: rgba(230, 220, 214, 0.5);
+}
+.main-card {
+  background-color: rgba(230, 220, 214, 0.1);
+}
+.btn-delete:hover{
+  color:red;
 }

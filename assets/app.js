@@ -2,8 +2,11 @@ let taskTitle = document.getElementById('task-title')
 let taskStatus = document.getElementById('task-status')
 let taskDescription = document.getElementById('task-description')
 let addtaskbtn = document.getElementById('addtaskbtn')
-let dt = new Date();
 
+let taskDate= document.getElementById('task-date')
+
+/* console.log(taskDateText)
+let taskDate = new Date(taskDateText); */
 
 function showContent() {
 
@@ -22,15 +25,15 @@ function showContent() {
 
     /* taskStatusVal = taskStatus.value */
     console.log(index)
-    taskArrayElemenet += `<div class="card">
-    <div class="card-header"><i class="fa-solid fa-calendar-days">${val.time}</i><i class="fa-solid fa-arrow-right-arrow-left"></i><i class="fa-solid fa-comment"></i></div>
+    taskArrayElemenet += `<div class="card mt-3">
+    <div class="card-header"><i class="fa-solid fa-calendar-days">${val.time}</i><i class="fa-solid fa-arrow-right-arrow-left"></i>${val.status}<i class="fa-solid fa-comment"></i></div>
     <div class="card-body"><h6>${val.title}</h6><p>${val.decr}</p></div>
-    <div class="card-footer text-left">
-        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+    <div class="card-footer text-center">
+        <button type="button" class="btn btn-outline-light  " onclick="edit(${index})" data-bs-toggle="modal"
             data-bs-target="#editTask">
             <i class="fa-solid fa-pen"></i> Edit
         </button>
-        <button type="button" class="btn btn-danger"onclick="showdeleteTask(${index})" id="deleteTaskbtn" data-bs-toggle="modal"
+        <button type="button" class="btn btn-delete btn-outline-light" onclick="showdeleteTask(${index})" id="deleteTaskbtn" data-bs-toggle="modal"
             data-bs-target="#deleteTask">
             <i class="fa-solid fa-calendar-xmark"></i> Delete
         </button>
@@ -38,7 +41,7 @@ function showContent() {
 </div>`
 
   })
-  
+
 
   addTaskList.innerHTML = taskArrayElemenet;
 
@@ -52,7 +55,9 @@ addtaskbtn.addEventListener("click", function () {
   taskTitleVal = taskTitle.value
   taskStatusVal = taskStatus.value
   taskDescriptionVal = taskDescription.value
-  const newObj = { 'title': taskTitleVal, 'status': taskStatusVal, 'decr': taskDescriptionVal, 'time': dt }
+  taskDateText = taskDate.value
+  console.log(taskDateText)
+  const newObj = { 'title': taskTitleVal, 'status': taskStatusVal, 'decr': taskDescriptionVal, 'time': taskDateText }
   if (taskTitleVal.trim() != 0) {
 
     let webtask = localStorage.getItem("localtask");
@@ -68,42 +73,41 @@ addtaskbtn.addEventListener("click", function () {
     /*  console.log(localStorage) */
   }
   taskTitle.value = ''
-  
+
   taskDescription.value = ''
 
   showContent();
 })
 
-
+/* edit part start */
 function edit(ind) {
-  console.log(ind)
+  /* console.log(ind) */
   let webtask = localStorage.getItem("localtask");
-  let taskObj = JSON.parse(webtask)
-  /* console.log(taskObj[ind].title) */
+  let taskObj = JSON.parse(webtask);
+  /* console.log(taskObj[ind]) */
   let edittaskbtn = document.getElementById('editTask')
   let editTitle = document.getElementById('edit-title')
   let editDescription = document.getElementById('edit-description')
   let editStatus = document.getElementById('edit-status')
   let addcomment = document.getElementById('addcomment')
-  console.log(taskTitle)
-
+  
 
   let saveindex = document.getElementById('saveindex')
   saveindex.value = ind
   /* console.log(saveindex.value) */
-  editTitle.value = taskObj[ind].title
-  console.log(editTitle.value)
-  editStatus.value = taskObj[ind].status
-  editDescription.value = taskObj[ind].decr
+  taskObj[ind].title = editTitle.value 
+  
+  taskObj[ind].status= editStatus.value 
+  taskObj[ind].decr = editDescription.value 
 }
 
 let savetaskbtn = document.getElementById('savetask')
-/* console.log(savetaskbtn) */
+
 savetaskbtn.addEventListener("click", function () {
   let webtask = localStorage.getItem("localtask");
   let taskObj = JSON.parse(webtask)
   let saveindex = document.getElementById('saveindex').value
-  /*  console.log(saveindex) */
+ 
   let editTitle = document.getElementById('edit-title')
   let editStatus = document.getElementById('edit-status')
   let editDescription = document.getElementById('edit-description')

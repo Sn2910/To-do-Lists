@@ -16,18 +16,18 @@
 <body>
     <div class="container-fluid">
         <div class="row mt-3 mb-3 text-center">
-            <div class="col-sm-6">
+            <div class=" header-text">
                 <h1>Enter Your <b> Task</b></h1>
             </div>
-            <div class="col-sm-6 text-center mt-1">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTask">
+            <div class=" text-start mt-1 mb-2 ">
+                <button type="button" class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#addTask">
                     <i class="fa-solid fa-circle-plus"></i> Add Task
                 </button>
             </div>
         </div>
         <div class="row ">
             <div class="col-sm-4">
-                <div class="card">
+                <div class="card main-card " >
                     <div class="card-header  bg-danger">
                         To Do
                     </div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="card">
+                <div class="card" style="min-height: 80%">
                     <div class="card-header bg-warning text-dark">
                         In Progress
                     </div>
@@ -67,12 +67,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="card">
+            <div class="col-sm-4 ">
+                <div class="card" style="min-height: 80%">
                     <div class="card-header bg-success">
                         Completed
                     </div>
-                    <div class="card-body">
+                    <div class="card-body ">
                         <!--   <h5 class="card-title">Special title treatment</h5>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
 
@@ -97,6 +97,11 @@
                                 <label for="task-title">Title</label>
                                 <input type="text" class="form-control" id="task-title"
                                     placeholder="Enter the title of your Task">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-title">date</label>
+                                <input type="date" class="form-control" id="task-date"
+                                    placeholder="Enter the date of your Task">
                             </div>
                             <div class="form-group">
                                 <label for="task-status">Select Status</label>
@@ -138,7 +143,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="edit-title">Title</label>
-                                <input type="text" class="form-control" id="edit-title"
+                                <input type="text" class="form-control " id="edit-title"
                                     placeholder="Enter the title of your Task">
                             </div>
                             <div class="form-group">
@@ -156,7 +161,7 @@
                             <label for="edit-description">Description</label>
                             <textarea class="form-control" id="edit-description" rows="3"></textarea>
                         </div>
-                        <div class="form-group text-end">
+                        <div class="form-group ">
                             <button type="button" class="btn btn-success" id = "addcomment"data-bs-toggle="modal"
                                 data-bs-target="#addComment"><i class="fa-solid fa-circle-plus"></i> Add
                                 Comment</button>
