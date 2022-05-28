@@ -24,7 +24,7 @@ function showContent() {
     console.log(index)
     taskArrayElemenet += `<div class="card">
     <div class="card-header"><i class="fa-solid fa-calendar-days">${val.time}</i><i class="fa-solid fa-arrow-right-arrow-left"></i><i class="fa-solid fa-comment"></i></div>
-    <div class="card-body"><h6>${val.title}</h6><p>${val.taskdecr}</p></div>
+    <div class="card-body"><h6>${val.title}</h6><p>${val.decr}</p></div>
     <div class="card-footer text-left">
         <button type="button" class="btn btn-success" data-bs-toggle="modal"
             data-bs-target="#editTask">
