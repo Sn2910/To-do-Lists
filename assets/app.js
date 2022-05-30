@@ -2,8 +2,10 @@ let taskTitle = document.getElementById('task-title')
 let taskStatus = document.getElementById('task-status')
 let taskDescription = document.getElementById('task-description')
 let addtaskbtn = document.getElementById('addtaskbtn')
+/* let commentBtn = document.getElementById("comment-btn") */
 
 let taskDate= document.getElementById('task-date')
+
 
 /* console.log(taskDateText)
 let taskDate = new Date(taskDateText); */
@@ -90,16 +92,15 @@ function edit(ind) {
   let editDescription = document.getElementById('edit-description')
   let editStatus = document.getElementById('edit-status')
   let addcomment = document.getElementById('addcomment')
-  /* let timeTable = document.getElementById('task-date-edit') */
+  let timeTable = document.getElementById('task-date-edit')
 
   let saveindex = document.getElementById('saveindex')
   saveindex.value = ind
   /* console.log(saveindex.value) */
   editTitle.value = taskObj[ind].title 
-  /* timeTable.value= taskObj[ind].time  */
-  
   editStatus.value = taskObj[ind].status
   editDescription.value = taskObj[ind].decr  
+  timeTable.value = taskObj[ind].time 
 }
 
 let savetaskbtn = document.getElementById('savetask')
@@ -108,17 +109,23 @@ savetaskbtn.addEventListener("click", function () {
   let webtask = localStorage.getItem("localtask");
   let taskObj = JSON.parse(webtask)
   let saveindex = document.getElementById('saveindex').value
-  /* let dateTask = document.getElementById('task-date-edit').value */
+  let timeTable = document.getElementById('task-date-edit')
  
   let editTitle = document.getElementById('edit-title')
   let editStatus = document.getElementById('edit-status')
   let editDescription = document.getElementById('edit-description')
   let edittaskbtn = document.getElementById('editTask')
-  taskObj[saveindex] = { 'title': editTitle.value, 'status': editStatus.value, 'decr': editDescription.value, 'time': dateTask }
+  taskObj[saveindex] = { 'title': editTitle.value, 'status': editStatus.value, 'decr': editDescription.value, 'time': timeTable.value, /* 'comment': commentText.value */}
   localStorage.setItem("localtask", JSON.stringify(taskObj));
   showContent()
 
 })
+/* 
+commentBtn.addEventListener('click',function (){
+  let commentText = document.getElementById('comment-text');
+
+
+} */
 
 function showdeleteTask(index) {
   let deleteTaskbtn = document.getElementById('deleteTaskbtn')
