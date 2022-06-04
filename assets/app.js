@@ -2,7 +2,7 @@ let taskTitle = document.getElementById('task-title')
 let taskStatus = document.getElementById('task-status')
 let taskDescription = document.getElementById('task-description')
 let addtaskbtn = document.getElementById('addtaskbtn')
- let commentBtn = document.getElementById("comment-btn") 
+ let commentBtn = document.getElementById("comment-btn")
 
 let taskDate = document.getElementById('task-date')
 
@@ -90,8 +90,8 @@ function buttcom(index){
   /* let saveindex = document.getElementById('saveindex').value */
   let taskObjSave = taskObj[index].comment
   console.log('i am tsk' +taskObjSave)
-  taskObjSave.push(commentText.value) 
-  console.log(taskObj.comment) 
+  taskObjSave.push(commentText.value)
+  console.log(taskObj.comment)
   console.log(commentText.value)
   localStorage.setItem("localtask", JSON.stringify(taskObj));
 
@@ -122,13 +122,14 @@ function edit(ind) {
   editStatus.value = taskObj[ind].status
   editDescription.value = taskObj[ind].decr
   timeTable.value = taskObj[ind].time
+
   savetaskbtn.onclick= ()=> {
     save(ind)
 
   }
   commentBtn.onclick = () =>{
     buttcom(ind)
-   
+
   }
 
   /* commentBtn.addEventListener('click', */
@@ -147,6 +148,8 @@ function save(ind) {
   let editTitle = document.getElementById('edit-title')
   let editStatus = document.getElementById('edit-status')
   let editDescription = document.getElementById('edit-description')
+  
+
   let edittaskbtn = document.getElementById('editTask')
   let commentTxt = taskObj[ind].comment
   console.log(commentTxt)
@@ -166,12 +169,12 @@ function save(ind) {
   console.log(taskObj)
   let commentText = document.getElementById('comment-text');
   let saveindex = document.getElementById('saveindex').value
-  
+
   let taskObjSave = taskObj[index].comment
-  taskObjSave.push(commentText.value) 
-  console.log(taskObj.comment) 
+  taskObjSave.push(commentText.value)
+  console.log(taskObj.comment)
   console.log(commentText.value)
-  
+
 
   localStorage.setItem("localtask", JSON.stringify(taskObj));
   showContent()
@@ -186,7 +189,7 @@ function showdeleteTask(index) {
   console.log(index)
    taskTitleVal = console.log("Title: "+taskObj[index].title)
   taskStatusVal = console.log("Status: "+taskObj[index].status)
-  taskDescriptionVal =console.log("Description: "+taskObj[index].decr) 
+  taskDescriptionVal =console.log("Description: "+taskObj[index].decr)
 
   cardbody.innerHTML = `<p> Title: ${taskObj[index].title} </p>
 <p> Status: ${taskObj[index].status} </p>
@@ -201,7 +204,3 @@ function showdeleteTask(index) {
 
 
 }
-
-
-
-
