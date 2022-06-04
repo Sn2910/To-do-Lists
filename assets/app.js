@@ -47,7 +47,7 @@ function showContent() {
 
 }
 
-showContent("all");
+showContent("all");  
 
 
 addtaskbtn.addEventListener("click", function () {
@@ -90,7 +90,7 @@ function edit(ind) {
   let editDescription = document.getElementById('edit-description')
   let editStatus = document.getElementById('edit-status')
   let addcomment = document.getElementById('addcomment')
-  /* let timeTable = document.getElementById('task-date-edit') */
+   let timeTable = document.getElementById('task-date-edit') 
 
   let saveindex = document.getElementById('saveindex')
   saveindex.value = ind
@@ -100,6 +100,7 @@ function edit(ind) {
   
   editStatus.value = taskObj[ind].status
   editDescription.value = taskObj[ind].decr  
+  timeTable.value = taskObj[ind].time
 }
 
 let savetaskbtn = document.getElementById('savetask')
@@ -108,13 +109,13 @@ savetaskbtn.addEventListener("click", function () {
   let webtask = localStorage.getItem("localtask");
   let taskObj = JSON.parse(webtask)
   let saveindex = document.getElementById('saveindex').value
-  /* let dateTask = document.getElementById('task-date-edit').value */
- 
   let editTitle = document.getElementById('edit-title')
   let editStatus = document.getElementById('edit-status')
   let editDescription = document.getElementById('edit-description')
+  let timeTable = document.getElementById('task-date-edit') 
+
   let edittaskbtn = document.getElementById('editTask')
-  taskObj[saveindex] = { 'title': editTitle.value, 'status': editStatus.value, 'decr': editDescription.value, 'time': dateTask }
+  taskObj[saveindex] = { 'title': editTitle.value, 'status': editStatus.value, 'decr': editDescription.value, 'time':timeTable.value }
   localStorage.setItem("localtask", JSON.stringify(taskObj));
   showContent()
 
