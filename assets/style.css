@@ -1,10 +1,10 @@
 
 body{
-  background-image: url("./wallpaperflare.com_wallpaper_1.jpg");
+ /*  background-image: url("./wallpaperflare.com_wallpaper_1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
-  background-position: center;
+  background-position: center; */
 }
 .header-text {
   color: rgb(238, 240, 243);
@@ -18,4 +18,10 @@ body{
 }
 .btn-delete:hover{
   color:red;
+}
+#todo-head {
+  background: #de6161;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #2657eb, #de6161);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #2657eb, #de6161); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
 }
