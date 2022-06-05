@@ -1,10 +1,10 @@
 
 body{
- /*  background-image: url("./wallpaperflare.com_wallpaper_1.jpg");
+  background-image: url("./wallpaperflare.com_wallpaper_1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
-  background-position: center; */
+  background-position: center;
 }
 .header-text {
   color: rgb(238, 240, 243);
