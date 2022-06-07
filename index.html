@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row mt-3 mb-3 text-center">
             <div class=" header-text">
                 <h1>Enter Your <b> Task</b></h1>
@@ -27,8 +27,8 @@
         </div>
         <div class="row ">
             <div class="col-sm-4">
-                <div class="card main-card " >
-                    <div id="todo-head" class="card-header  ">
+                <div class="card main-card ">
+                    <div id="todo-head" class="card-header">
                         To Do
                     </div>
                     <div class="card-body" id="addTaskList">
@@ -51,31 +51,23 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="card" style="min-height: 80%">
-                    <div id="progress-class="card-header ">
+                <div class="card">
+                    <div id="progress-head"class ="card-header">
                         In Progress
                     </div>
-                    <div class="card-body">
-                        <div class="card">
-                            <div class="card-header">Header</div>
-                            <div class="card-body">Content</div>
-                            <div class="card-footer">Footer</div>
-                        </div>
-                        <!--   <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                    <div class="card-body" id ="progressTaskList">
+                     
 
                     </div>
                 </div>
             </div>
             <div class="col-sm-4 ">
-                <div class="card" style="min-height: 80%">
-                    <div class="card-header bg-success">
+                <div class="card">
+                    <div id="done-head"class="card-header bg-success">
                         Completed
                     </div>
-                    <div class="card-body ">
-                        <!--   <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-
+                    <div class="card-body" id="completedTaskList">
+                      
                     </div>
                 </div>
             </div>
@@ -121,9 +113,9 @@
                 </div>
                 </form>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success " id="addtaskbtn"><i class="fa-solid fa-circle-plus"></i> Add</button>
+                    <button type="button" class="btn btn-success " id="addtaskbtn"data-bs-dismiss="modal"><i class="fa-solid fa-circle-plus"></i>Add</button>
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
-                            class="fa-solid fa-rectangle-xmark"></i> Close</button>
+                            class="fa-solid fa-rectangle-xmark"></i>Close</button>
 
                 </div>
             </div>
@@ -170,7 +162,7 @@
 
                         </div>
                         <div class="form-group ">
-                            <button type="button" class="btn btn-success" id = "addcomment"data-bs-toggle="modal"
+                            <button type="button" class="btn btn-success" id ="addcomment"data-bs-toggle="modal"
                                 data-bs-target="#addComment"><i class="fa-solid fa-circle-plus"></i> Add
                                 Comment</button>
                         </div>
@@ -181,7 +173,7 @@
                 </form>
                 <div class="modal-footer">
                     <input type="hidden" id="saveindex">
-                    <button type="button" class="btn btn-success" id="savetask"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                    <button type="button" class="btn btn-success" id="savetask" data-bs-dismiss="modal"><i class="fa-solid fa-floppy-disk"></i> Save</button>
         
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
                             class="fa-solid fa-rectangle-xmark"></i> Close</button>
@@ -207,7 +199,7 @@
                         </div>
                     </form>
                     <div class="modal-footer">
-                        <button type="button" id="comment-btn" onclick=""class="btn btn-success"><i class="fa-solid fa-circle-plus"></i>
+                        <button type="button" id="comment-btn" onclick=""class="btn btn-success"data-bs-toggle="modal" data-bs-target="#editTask"><i class="fa-solid fa-circle-plus"></i>
                             Add</button>
                         <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
                                 class="fa-solid fa-rectangle-xmark"></i> Close</button>
@@ -235,7 +227,7 @@
                             </div>
                           </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" id = "modaldetebtn"> <i class="fa-solid fa-calendar-xmark"></i> Delete</button>
+                            <button type="button" class="btn btn-danger" id = "modaldetebtn" data-bs-dismiss="modal"> <i class="fa-solid fa-calendar-xmark"></i> Delete</button>
                             <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
                                     class="fa-solid fa-rectangle-xmark"></i> Close
                             </button>

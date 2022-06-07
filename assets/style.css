@@ -1,27 +1,90 @@
 
 body{
- /*  background-image: url("./wallpaperflare.com_wallpaper_1.jpg");
+  background-image: url(../images/todobg.jpg);
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
-  background-position: center; */
 }
-.header-text {
-  color: rgb(238, 240, 243);
-  margin: 2rem auto;
+.header-text{
+  color: #f8f9fa;
 }
-.card {
-  background-color: rgba(230, 220, 214, 0.5);
+.card{
+min-height: 70vh;
+background-color:rgb(255,255,255, 0.5);
+
 }
-.main-card {
-  background-color: rgba(230, 220, 214, 0.1);
+.card-header{
+ margin: 4px 4px;
+background: rgb(5,3,8);
+background: linear-gradient(108deg, rgba(5,3,8,1) 0%, rgba(19,38,79,1) 18%);
+
 }
-.btn-delete:hover{
-  color:red;
-}
-#todo-head {
-  background: #de6161;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #2657eb, #de6161);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #2657eb, #de6161); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+#todo-head, #progress-head, #done-head{
+  color: #f8f9fa;
+  font-weight: 600;
+  font-size: 20px;
   
+}
+.card-header:first-child {
+  border-radius:0 ; 
+}
+.card-task{
+  background-color:rgb(255,255,255, 0.5);
+}
+.modal{
+  --bs-modal-bg: rgba(19, 38, 79, 0.7);
+}
+.modal-backdrop {
+  background-color: rgb(179, 177, 177);
+}
+h5{
+  color: blanchedalmond;
+}
+.modal-content{
+  color: blanchedalmond;
+}
+label{
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+.form-control{
+  border: 2px solid rgb(110,100,94);
+}
+.btn-close{
+ /*  background:  rgb(220, 42, 42); */
+ 
+}
+i{
+  color: white;
+  padding: 4px;
+  
+} 
+.fa-arrow-right-arrow-left {
+  background: white;
+  color:rgba(19, 38, 79);
+  font-weight: bold;
+ margin: 6px 20px;
+  border-radius: 4px;
+}
+.fa-calendar-days{
+ 
+}
+.fa-comment{
+  background: white;
+  color: rgba(19, 38, 79);
+  border-radius: 4px;
+ 
+}
+b{
+  margin-left: 4px;
+}
+.btn-outline-light {
+  --bs-btn-hover-bg:  rgba(19, 38, 79);
+  --bs-btn-active-color: #f8f9fa;
+  --bs-btn-hover-color: #f8f9fa;
+
+}
+.fa-pen:hover, .fa-calendar-xmark:hover{
+  color: #f8f9fa;
 }

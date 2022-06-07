@@ -3,12 +3,26 @@ let taskStatus = document.getElementById('task-status')
 let taskDescription = document.getElementById('task-description')
 let addtaskbtn = document.getElementById('addtaskbtn')
  let commentBtn = document.getElementById("comment-btn")
-
 let taskDate = document.getElementById('task-date')
-
 
 /* console.log(taskDateText)
 let taskDate = new Date(taskDateText); */
+function makeTaskHtml(val,index){
+return `<div class="card-task mt-3">
+<div class="card-header"><i class="fa-solid fa-calendar-days"> <b>${val.time}</b></i><i class="fa-solid fa-arrow-right-arrow-left"><b>${val.status}</b></i><i class="fa-solid fa-comment"><b>${val.comment.length}</b></i></div>
+<div class="card-body"><b>Title: </b>${val.title}<br><b>Description: </b>${val.decr}</div>
+<div class="card-footer text-right">
+    <button type="button" class="btn btn-outline-light id='${index}' "onclick="edit(${index})" data-bs-toggle="modal"
+        data-bs-target="#editTask">
+        <i class="fa-solid fa-pen"></i>Edit
+    </button>
+    <button type="button" class="btn btn-delete btn-outline-light" onclick="showdeleteTask(${index})" id="deleteTaskbtn" data-bs-toggle="modal"
+        data-bs-target="#deleteTask">
+        <i class="fa-solid fa-calendar-xmark"></i>Delete
+    </button>
+</div>
+</div>`
+}
 
 function showContent() {
 
@@ -19,31 +33,32 @@ function showContent() {
   else {
     taskObj = JSON.parse(webtask);
   }
-  let taskArrayElemenet = ''
+  
+/*   let taskArrayElemenet = '' */
   let addTaskList = document.getElementById('addTaskList')
+  let progressTaskListElement = document.getElementById('progressTaskList')
+  let completedTaskListElement = document.getElementById('completedTaskList')
+  addTaskList.innerHTML =''
+  progressTaskListElement.innerHTML  =''
+  completedTaskListElement.innerHTML =''
+  
   /*  let dt = new Date() */
   taskObj.forEach((val, index) => {
     /* taskStatusVal = taskStatus.value */
-    console.log(index)
-    taskArrayElemenet += `<div class="card mt-3">
-    <div class="card-header"><i class="fa-solid fa-calendar-days">${val.time}</i><i class="fa-solid fa-arrow-right-arrow-left"></i>${val.status}<i class="fa-solid fa-comment"></i></div>
-    <div class="card-body"><h6>${val.title}</h6><p>${val.decr}</p></div>
-    <div class="card-footer text-center">
-        <button type="button" class="btn btn-outline-light id='${index}' " onclick="edit(${index})" data-bs-toggle="modal"
-            data-bs-target="#editTask">
-            <i class="fa-solid fa-pen"></i> Edit
-        </button>
-        <button type="button" class="btn btn-delete btn-outline-light" onclick="showdeleteTask(${index})" id="deleteTaskbtn" data-bs-toggle="modal"
-            data-bs-target="#deleteTask">
-            <i class="fa-solid fa-calendar-xmark"></i> Delete
-        </button>
-    </div>
-</div>`
+    /* console.log(index) */
+    if(val.status ===  "todo"){
+      addTaskList.innerHTML += makeTaskHtml(val,index)
+    }else if(val.status ===  "progress"){
+      progressTaskListElement.innerHTML  += makeTaskHtml(val, index)
+    }else if(val.status ===  "done"){
+      completedTaskListElement.innerHTML += makeTaskHtml(val, index)
+     }
+    
 
   })
 
 
-  addTaskList.innerHTML = taskArrayElemenet;
+ 
 
 }
 
@@ -74,7 +89,6 @@ addtaskbtn.addEventListener("click", function () {
     /*  console.log(localStorage) */
   }
   taskTitle.value = ''
-
   taskDescription.value = ''
 
   showContent();
