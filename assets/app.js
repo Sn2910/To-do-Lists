@@ -11,12 +11,12 @@ function makeTaskHtml(val,index){
 return `<div class="card-task mt-3">
 <div class="card-header"><i class="fa-solid fa-calendar-days"> <b>${val.time}</b></i><i class="fa-solid fa-arrow-right-arrow-left"><b>${val.status}</b></i><i class="fa-solid fa-comment"><b>${val.comment.length}</b></i></div>
 <div class="card-body"><b>Title: </b>${val.title}<br><b>Description: </b>${val.decr}</div>
-<div class="card-footer text-right">
+<div class="card-footer text-end">
     <button type="button" class="btn btn-outline-light id='${index}' "onclick="edit(${index})" data-bs-toggle="modal"
         data-bs-target="#editTask">
         <i class="fa-solid fa-pen"></i>Edit
     </button>
-    <button type="button" class="btn btn-delete btn-outline-light" onclick="showdeleteTask(${index})" id="deleteTaskbtn" data-bs-toggle="modal"
+    <button type="button" class="btn btn-delete btn-outline-light"" onclick="showdeleteTask(${index})" id="deleteTaskbtn" data-bs-toggle="modal"
         data-bs-target="#deleteTask">
         <i class="fa-solid fa-calendar-xmark"></i>Delete
     </button>
@@ -53,12 +53,11 @@ function showContent() {
     }else if(val.status ===  "done"){
       completedTaskListElement.innerHTML += makeTaskHtml(val, index)
      }
-    
+  
 
   })
 
 
- 
 
 }
 
@@ -75,7 +74,7 @@ addtaskbtn.addEventListener("click", function () {
   console.log(taskDateText)
   const newObj = { 'title': taskTitleVal, 'status': taskStatusVal, 'decr': taskDescriptionVal, 'time': taskDateText, 'comment': taskComment }
   if (taskTitleVal.trim() != 0) {
-
+  
     let webtask = localStorage.getItem("localtask");
     /*  console.log(webtask) */
     if (webtask == null) {
@@ -130,7 +129,7 @@ function edit(ind) {
   commentOutput.innerHTML = '';
   console.log('inside edit'+taskObjSave)
   for (let text of taskObjSave ){
-    commentOutput.innerHTML += `<div>${text}</div>`
+    commentOutput.innerHTML += `<div>>> ${text}</div>`
      }
   editTitle.value = taskObj[ind].title
   editStatus.value = taskObj[ind].status
@@ -205,9 +204,9 @@ function showdeleteTask(index) {
   taskStatusVal = console.log("Status: "+taskObj[index].status)
   taskDescriptionVal =console.log("Description: "+taskObj[index].decr)
 
-  cardbody.innerHTML = `<p> Title: ${taskObj[index].title} </p>
-<p> Status: ${taskObj[index].status} </p>
-<p> Description:${taskObj[index].decr} </p>`
+  cardbody.innerHTML = `<p><b>Title: </b> ${taskObj[index].title} </p>
+<p><b>Status: </b>${taskObj[index].status} </p>
+<p><b>Description: </b>${taskObj[index].decr} </p>`
 
   let modaldetebtn = document.getElementById('modaldetebtn')
   modaldetebtn.addEventListener("click", () => {

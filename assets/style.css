@@ -10,8 +10,9 @@ body{
   color: #f8f9fa;
 }
 .card{
-min-height: 70vh;
+min-height: 50vh;
 background-color:rgb(255,255,255, 0.5);
+--bs-card-cap-padding-x: 0.5rem;
 
 }
 .card-header{
@@ -64,27 +65,46 @@ i{
   background: white;
   color:rgba(19, 38, 79);
   font-weight: bold;
- margin: 6px 20px;
+ margin: 6px 8px;
   border-radius: 4px;
 }
-.fa-calendar-days{
- 
-}
+
 .fa-comment{
   background: white;
   color: rgba(19, 38, 79);
   border-radius: 4px;
- 
-}
-b{
-  margin-left: 4px;
-}
-.btn-outline-light {
-  --bs-btn-hover-bg:  rgba(19, 38, 79);
-  --bs-btn-active-color: #f8f9fa;
-  --bs-btn-hover-color: #f8f9fa;
 
 }
+b{
+  margin-left: 2px;
+}
+ .btn-outline-light {
+  --bs-btn-hover-bg:  transparent;
+  --bs-btn-active-color:  #fff;
+  --bs-btn-hover-color:  #fff;
+  --bs-btn-border-color: rgba(19, 38, 79);
+
+} 
+.btn{
+  --bs-btn-bg: rgba(19, 38, 79);
+}
+
 .fa-pen:hover, .fa-calendar-xmark:hover{
-  color: #f8f9fa;
+  color: #fff ;
+}
+.fa-solid {
+  font-size: 14px;
+}
+@media  (max-width: 768px){
+ 
+  .fa-calendar-days, .fa-arrow-right-arrow-left, .fa-comment{
+    font-size: 10px;
+  }
+  i{
+    padding: 2px;
+  }
+  .fa-arrow-right-arrow-left{
+    margin: 6px 6px;
+  }
+ 
 }
