@@ -176,6 +176,7 @@ function buttcom(index){
   console.log(commentText.value)
   localStorage.setItem("localtask", JSON.stringify(taskObj));
   edit(index)
+  commentText.value= ''
 }
 function edit(ind) {
   /* console.log(ind) */
@@ -281,6 +282,8 @@ function showdeleteTask(index) {
     taskObj.splice(index, 1)
     localStorage.setItem("localtask", JSON.stringify(taskObj));
     showContent()
+    showPopUp('deleted the Task!');
+  let timeOut = setTimeout(ClosePopUp,3000);
   })
 
   
