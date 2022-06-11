@@ -7,6 +7,7 @@ let taskDate = document.getElementById('task-date')
 let savetaskbtn = document.getElementById('savetask')
 let addTaskModalBody = document.querySelector('#addTask .modal-body')
 let editTaskModalBody = document.querySelector('#editTask .modal-body')
+let commentModalBody = document.querySelector('#addComment .modal-body')
 
 function checkKeyAdd(){
   console.log('test') 
@@ -29,6 +30,17 @@ function checkKeyEdit(){
   }
 }
 editTaskModalBody.addEventListener('keydown', checkKeyEdit )
+
+function checkKeyComment(){
+  console.log('test') 
+  const errors = [...document.querySelectorAll('#addComment .invalid-feedback')].filter((element)=>{return getComputedStyle(element, null).display ==='block'}).length
+  if(errors){
+    commentBtn.disabled = true;
+  } else {
+    commentBtn.disabled = false;
+  }
+}
+commentModalBody.addEventListener('keydown', checkKeyEdit )
 
 addtaskbtn.addEventListener("click", function () {
 
