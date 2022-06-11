@@ -23,7 +23,7 @@ background: rgb(5,3,8);
 background: linear-gradient(108deg, rgba(5,3,8,1) 0%, rgba(19,38,79,1) 18%);
 
 }
-#todo-head, #progress-head, #done-head{
+#todo-head, #progress, #done{
   color: #f8f9fa;
   font-weight: 600;
   font-size: 20px;

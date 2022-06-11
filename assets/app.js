@@ -41,7 +41,6 @@ addtaskbtn.addEventListener("click", function () {
     
     }
     taskObj.push(newObj);
-   swal("Task added successfully");
     localStorage.setItem("localtask", JSON.stringify(taskObj));
     /*  console.log(localStorage) */
   }
@@ -75,7 +74,7 @@ function showContent() {
     taskArrayElemenet = `<div class="card-task mt-3">
     <div class="card-header"><i class="fa-solid fa-calendar-days"><b>${val.time}</b></i><i class="fa-solid fa-arrow-right-arrow-left"><b>${val.status}</b></i><i class="fa-solid fa-comment"><b>${val.comment.length}</b></i></div>
     <div class="card-body"><b>Title: </b>${val.title}<br><b>Description: </b>${val.decr}</div>
-    <div class="card-footer text-center">
+    <div class="card-footer text-end">
         <button type="button" class="btn btn-outline-light id='${index}' " onclick="edit(${index})" data-bs-toggle="modal"
             data-bs-target="#editTask">
             <i class="fa-solid fa-pen"></i> Edit
