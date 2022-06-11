@@ -28,8 +28,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4  mb-3">
-                    <div class="card">
+                <div class="col-sm-4">
+                    <div class="card mb-2">
                         <div id="todo-head" class="card-header">
                             To Do
                         </div>
@@ -54,14 +54,12 @@
             </div>
             <!-- in progress section START-->
             <div class="col-sm-4">
-                <div class="card " style="min-height: 80%">
+                <div class="card">
                     <div id="progress"class="card-header ">
                         In Progress
                     </div>
                     <div class="card-body" id="con-progress">
                      
-                        <!--   <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
 
                     </div>
                 </div>
@@ -72,20 +70,9 @@
                     <div class="card-header bg-success">
                         Completed
                     </div>
-                    <div class="card-body  " id="con-done">
-                        <!--   <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                    <div class="card-body " id="con-done">
+                        
 
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-3">
-                    <div class="card">
-                        <div id="done-head" class="card-header ">
-                            Completed
-                        </div>
-                        <div class="card-body" id="completedTaskList">
 
                         </div>
                     </div>
@@ -158,7 +145,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-light " id="addtaskbtn" data-bs-dismiss="modal"><i
+                    <button type="button" disabled class="btn btn-outline-light " id="addtaskbtn" data-bs-dismiss="modal"><i
                             class="fa-solid fa-circle-plus"></i> Add</button>
                     <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal"><i
                             class="fa-solid fa-rectangle-xmark"></i> Close</button>
@@ -199,7 +186,7 @@
                                         Looks good!
                                     </div>
                                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                        Title must be between 4-8 characters
+                                        Please provide valid Date
                                     </div>
                             </div>
                             <div class="form-group">
@@ -215,7 +202,7 @@
                                     Looks good!
                                 </div>
                                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                    Title must be between 4-8 characters
+                                    Please provide valid Status
                                 </div>
                             </div>
 
@@ -227,7 +214,7 @@
                                 Looks good!
                             </div>
                             <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                Title must be between 4-8 characters
+                                Please provide valid Description
                             </div>
                         </div>
                         <h6>New Comments:</h6>
