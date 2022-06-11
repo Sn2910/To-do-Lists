@@ -6,6 +6,7 @@ body{
   background-repeat: no-repeat;
   min-height: 100vh;
 }
+
 .header-text{
   color: #f8f9fa;
 }
@@ -13,6 +14,7 @@ body{
 min-height: 50vh;
 background-color:rgb(255,255,255, 0.5);
 --bs-card-cap-padding-x: 0.5rem;
+
 
 }
 .card-header{
@@ -61,19 +63,26 @@ i{
   padding: 4px;
   
 } 
+
 .fa-arrow-right-arrow-left {
   background: white;
   color:rgba(19, 38, 79);
   font-weight: bold;
- margin: 6px 8px;
+  margin: 6px 8px;
   border-radius: 4px;
+  font-size: 12px;
+  
 }
 
 .fa-comment{
   background: white;
   color: rgba(19, 38, 79);
   border-radius: 4px;
+  font-size: 12px;
 
+}
+.fa-calendar-days{
+  font-size: 12px;
 }
 b{
   margin-left: 2px;
@@ -92,13 +101,12 @@ b{
 .fa-pen:hover, .fa-calendar-xmark:hover{
   color: #fff ;
 }
-.fa-solid {
-  font-size: 14px;
-}
-@media  (max-width: 768px){
+
+
+@media(max-width: 768px){
  
   .fa-calendar-days, .fa-arrow-right-arrow-left, .fa-comment{
-    font-size: 10px;
+    font-size: 8px;
   }
   i{
     padding: 2px;
@@ -106,5 +114,19 @@ b{
   .fa-arrow-right-arrow-left{
     margin: 6px 6px;
   }
- 
+  #todo-head, #progress-head, #done-head{
+    font-size: 14px;
+  }
+  .btn {
+    --bs-btn-padding-x: 0.55rem;
+    --bs-btn-padding-y: 0.175rem;
+      font-size: 14px;
+}
+
+
+}   
+@media(min-width: 768px){
+  .container-fluid{
+    min-height: 100vh;
+  }
 }

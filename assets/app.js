@@ -8,7 +8,7 @@ let taskDate = document.getElementById('task-date')
 /* console.log(taskDateText)
 let taskDate = new Date(taskDateText); */
 function makeTaskHtml(val,index){
-return `<div class="card-task mt-3">
+return `<div class="card-task mt-3" id= "cardBox"draggable = "true">
 <div class="card-header"><i class="fa-solid fa-calendar-days"> <b>${val.time}</b></i><i class="fa-solid fa-arrow-right-arrow-left"><b>${val.status}</b></i><i class="fa-solid fa-comment"><b>${val.comment.length}</b></i></div>
 <div class="card-body"><b>Title: </b>${val.title}<br><b>Description: </b>${val.decr}</div>
 <div class="card-footer text-end">
@@ -73,17 +73,20 @@ addtaskbtn.addEventListener("click", function () {
   taskComment = []
   console.log(taskDateText)
   const newObj = { 'title': taskTitleVal, 'status': taskStatusVal, 'decr': taskDescriptionVal, 'time': taskDateText, 'comment': taskComment }
-  if (taskTitleVal.trim() != 0) {
+  if (taskTitleVal.trim() != 0 && taskDateText != '')  {
   
     let webtask = localStorage.getItem("localtask");
     /*  console.log(webtask) */
     if (webtask == null) {
       taskObj = [];
+      
     }
     else {
       taskObj = JSON.parse(webtask);
+    
     }
     taskObj.push(newObj);
+   swal("Task added successfully");
     localStorage.setItem("localtask", JSON.stringify(taskObj));
     /*  console.log(localStorage) */
   }
@@ -95,19 +98,16 @@ addtaskbtn.addEventListener("click", function () {
 
 /* edit part start */
 function buttcom(index){
-  console.log( 'i am' +index)
   let webtask = localStorage.getItem("localtask");
   let taskObj = JSON.parse(webtask)
-  console.log('heyyy'+taskObj[index].title)
   let commentText = document.getElementById('comment-text');
-  /* let saveindex = document.getElementById('saveindex').value */
   let taskObjSave = taskObj[index].comment
   console.log('i am tsk' +taskObjSave)
   taskObjSave.push(commentText.value)
   console.log(taskObj.comment)
   console.log(commentText.value)
   localStorage.setItem("localtask", JSON.stringify(taskObj));
-
+  
 }
 function edit(ind) {
   /* console.log(ind) */
@@ -123,25 +123,26 @@ function edit(ind) {
   let commentOutput = document.querySelector('#comment-output')
   /* let saveindex = document.getElementById('saveindex') */
   let taskObjSave = taskObj[ind].comment
-  console.log('again'+taskObjSave)
   /* saveindex.value = ind */
   
-  commentOutput.innerHTML = '';
-  console.log('inside edit'+taskObjSave)
-  for (let text of taskObjSave ){
-    commentOutput.innerHTML += `<div>>> ${text}</div>`
-     }
   editTitle.value = taskObj[ind].title
   editStatus.value = taskObj[ind].status
   editDescription.value = taskObj[ind].decr
   timeTable.value = taskObj[ind].time
+  commentOutput.innerHTML = ``;
+  for (let text of taskObjSave ){
+   commentOutput.innerHTML += `<div>>> ${text}</div>`
 
+    } 
   savetaskbtn.onclick= ()=> {
     save(ind)
+   
 
   }
   commentBtn.onclick = () =>{
+    
     buttcom(ind)
+    showContent();
 
   }
 
@@ -217,3 +218,10 @@ function showdeleteTask(index) {
 
 
 }
+
+
+
+/* 
+const cardBox = document.getElementById('cardBox')
+const cardContainer = document.getElementsByClassName('card-body"')
+cardBox.addEventListener('dragstart', ()=>) */
