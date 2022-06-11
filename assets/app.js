@@ -93,7 +93,7 @@ addtaskbtn.addEventListener("click", function () {
 
   showContent();
 
-  showPopUp('Added a new Task');
+  showPopUp('added a new Task!');
   let timeOut = setTimeout(ClosePopUp,3000);
   
   
@@ -205,11 +205,15 @@ function edit(ind) {
   savetaskbtn.onclick= ()=> {
     save(ind)
     showContent();
+    showPopUp('edited the Task!');
+  let timeOut = setTimeout(ClosePopUp,3000);
   }
   commentBtn.onclick = () =>{
     
     buttcom(ind)
     showContent();
+    showPopUp('added a comment!');
+  let timeOut = setTimeout(ClosePopUp,3000);
   }
 
   /* commentBtn.addEventListener('click', */
