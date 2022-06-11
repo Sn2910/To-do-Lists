@@ -8,6 +8,21 @@ let savetaskbtn = document.getElementById('savetask')
 let addTaskModalBody = document.querySelector('#addTask .modal-body')
 let editTaskModalBody = document.querySelector('#editTask .modal-body')
 let commentModalBody = document.querySelector('#addComment .modal-body')
+let popUpMsg = document.querySelector('#alert-msg')
+
+
+function showPopUp(text){
+  popUpMsg.innerHTML = `<h4>Success!</h4>
+  <p>You have successfully ${text}</p>`
+  
+	popUpMsg.style.visibility= 'visible';
+}
+function ClosePopUp(){
+	popUpMsg.style.visibility="hidden";
+}
+
+
+
 
 function checkKeyAdd(){
   console.log('test') 
@@ -71,6 +86,11 @@ addtaskbtn.addEventListener("click", function () {
   taskTitle.value = ''
   taskDescription.value = ''
 
+  showContent();
+
+  showPopUp('Added a new Task');
+  let timeOut = setTimeout(ClosePopUp,3000);
+  
   showContent();
 })
 /* console.log(taskDateText)
