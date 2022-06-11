@@ -15,24 +15,26 @@
 
 <body>
     <div class="container-fluid">
-        <div class="row mt-3 mb-3 text-center">
-            <div class=" header-text">
-                <h1>Enter Your <b> Task</b></h1>
+        <div class="container">
+            <div class="row mt-3 mb-3 text-center">
+                <div class=" header-text">
+                    <h1><i class="fas fa-clipboard-list"></i> To Do<b> List</b></h1>
+                </div>
+                <div class=" text-start mt-1 mb-2 ">
+                    <button type="button" class="btn btn-outline-light " data-bs-toggle="modal"
+                        data-bs-target="#addTask">
+                        <i class="fa-solid fa-circle-plus"></i>Add Task
+                    </button>
+                </div>
             </div>
-            <div class=" text-start mt-1 mb-2 ">
-                <button type="button" class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#addTask">
-                    <i class="fa-solid fa-circle-plus"></i> Add Task
-                </button>
-            </div>
-        </div>
-        <div class="row ">
-            <div class="col-sm-4">
-                <div class="card main-card " >
-                    <div id="todo-head" class="card-header  ">
-                        To Do
-                    </div>
-                    <div class="card-body" id="addTaskList">
-                        <!-- <div class="card">
+            <div class="row">
+                <div class="col-sm-4  mb-3">
+                    <div class="card">
+                        <div id="todo-head" class="card-header">
+                            To Do
+                        </div>
+                        <div class="card-body" id="addTaskList">
+                            <!-- <div class="card">
                             <div class="card-header"><i class="fa-solid fa-calendar-days"></i><span id='date-time' style="font-size: 8px;"></span><i class="fa-solid fa-arrow-right-arrow-left"></i>todo<i class="fa-solid fa-comment"></i></div>
                             <div class="card-body">Content</div>
                             <div class="card-footer text-left">
@@ -74,53 +76,91 @@
                         <!--   <h5 class="card-title">Special title treatment</h5>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
 
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 mb-3">
+                    <div class="card">
+                        <div id="done-head" class="card-header ">
+                            Completed
+                        </div>
+                        <div class="card-body" id="completedTaskList">
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
     <!--=======Modal for Add Task==========-->
     <div class="modal" tabindex="-1" id="addTask">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" min-height: 10vh>
                 <div class="modal-header">
                     <h5 class="modal-title" id="addTaskForm">Add New Task</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="" class="was-validated">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="task-title">Title</label>
-                                <input type="text" class="form-control" id="task-title"
-                                    placeholder="Enter the title of your Task">
+                                <input type="text" class="form-control" id="task-title" pattern="[a-zA-Z0-9_ ]+"
+                                    maxlength="8" minlength="4" required placeholder="Enter the title of your Task">
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    Title must be between 4-8 characters
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="task-title">date</label>
-                                <input type="date" class="form-control" id="task-date"
-                                    placeholder="Enter the date of your Task">
+                                <label for="task-title">Date</label>
+                                <input type="date" class="form-control" id="task-date" max="2025-01-01" min="2022-01-01"
+                                    required placeholder="Enter the date of your Task">
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    Please provide valid Date
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label for="task-status">Select Status</label>
-                                <select class="form-control" id="task-status">
+                                <select class="form-control" id="task-status" required>
+                                    <option selected disabled value="">Choose the status</option>
                                     <option value="todo">To Do</option>
                                     <option value="progress">In progress</option>
                                     <option value="done">Completed</option>
-
                                 </select>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    Please provide valid Status
+                                </div>
                             </div>
 
+
+                            <div class="form-group">
+                                <label for="task-description">Description</label>
+                                <textarea class="form-control" id="task-description" rows="3" required></textarea>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    Please provide valid Description
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="task-description">Description</label>
-                            <textarea class="form-control" id="task-description" rows="3"></textarea>
-                        </div>
+                    </form>
                 </div>
-                </form>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success " id="addtaskbtn"><i class="fa-solid fa-circle-plus"></i> Add</button>
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
+                    <button type="button" class="btn btn-outline-light " id="addtaskbtn" data-bs-dismiss="modal"><i
+                            class="fa-solid fa-circle-plus"></i> Add</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal"><i
                             class="fa-solid fa-rectangle-xmark"></i> Close</button>
 
                 </div>
@@ -137,53 +177,78 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form class="was-validated">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="edit-title">Title</label>
-                                <input type="text" class="form-control " id="edit-title"
+                                <input type="text" class="form-control " id="edit-title"pattern="[a-zA-Z0-9_ ]+"
+                                maxlength="8" minlength="4" required
                                     placeholder="Enter the title of your Task">
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        Title must be between 4-8 characters
+                                    </div>
                             </div>
                             <div class="form-group">
-                                <label for="task-title">Change Date</label>
-                                <input type="date" class="form-control" id="task-date-edit"
+                                <label for="task-title">Date</label>
+                                <input type="date" class="form-control" id="task-date-edit" max="2025-01-01" min="2022-01-01"
                                     placeholder="Enter the date of your Task">
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                        Title must be between 4-8 characters
+                                    </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-status">Select Status</label>
-                                <select class="form-control" id="edit-status">
+                                <select class="form-control" id="edit-status" required>
+                                    <option selected disabled value="">Choose the status</option>
                                     <option value="todo">To Do</option>
                                     <option value="progress">In progress</option>
                                     <option value="done">Completed</option>
 
                                 </select>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    Title must be between 4-8 characters
+                                </div>
                             </div>
 
                         </div>
                         <div class="form-group mb-3">
                             <label for="edit-description">Description</label>
-                            <textarea class="form-control" id="edit-description" rows="3"></textarea>
+                            <textarea class="form-control" id="edit-description" rows="3" required></textarea>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                Title must be between 4-8 characters
+                            </div>
                         </div>
-                        <h5>Comments:</h5>
+                        <h6>New Comments:</h6>
                         <div id="comment-output">
                             
 
                         </div>
-                        <div class="form-group ">
-                            <button type="button" class="btn btn-success" id = "addcomment"data-bs-toggle="modal"
+                        <div class="form-group text-end">
+                            <button type="button" class="btn btn-outline-light" id="addcomment" data-bs-toggle="modal"
                                 data-bs-target="#addComment"><i class="fa-solid fa-circle-plus"></i> Add
                                 Comment</button>
                         </div>
-                        <div id="commentbox">
-                            
-                        </div>
+
                 </div>
                 </form>
                 <div class="modal-footer">
                     <input type="hidden" id="saveindex">
-                    <button type="button" class="btn btn-success" id="savetask"><i class="fa-solid fa-floppy-disk"></i> Save</button>
-        
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
+                    <button type="button" class="btn btn-outline-light" id="savetask" data-bs-dismiss="modal"><i
+                            class="fa-solid fa-floppy-disk"></i> Save</button>
+
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal"><i
                             class="fa-solid fa-rectangle-xmark"></i> Close</button>
 
                 </div>
@@ -207,9 +272,10 @@
                         </div>
                     </form>
                     <div class="modal-footer">
-                        <button type="button" id="comment-btn" onclick=""class="btn btn-success" data-bs-dismiss="modal"><i class="fa-solid fa-circle-plus"></i>
+                        <button type="button" id="comment-btn" onclick="" class="btn btn-outline-light "
+                            data-bs-toggle="modal" data-bs-target="#editTask"><i class="fa-solid fa-circle-plus"></i>
                             Add</button>
-                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal"><i
                                 class="fa-solid fa-rectangle-xmark"></i> Close</button>
 
                     </div>
@@ -217,45 +283,74 @@
             </div>
         </div>
     </div>
-        <!--=======Modal for Delete ==========-->
-        <div class="modal" tabindex="-1" id="deleteTask">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="deleteTaskForm">Delete Task</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card border-secondary mb-3" >
-                            <div class="card-header">Are you sure you want to delete the task?</div>
-                            <div class="card-body text-secondary" id ="cardbody">
-                               
-                              <!-- <h5 class="card-title">Secondary card title</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                            </div>
-                          </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" id = "modaldetebtn" data-bs-dismiss="modal"> <i class="fa-solid fa-calendar-xmark"></i> Delete</button>
-                            <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
-                                    class="fa-solid fa-rectangle-xmark"></i> Close
-                            </button>
+    <!--=======Modal for Delete ==========-->
+    <div class="modal" tabindex="-1" id="deleteTask">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteTaskForm">Delete Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card border-secondary mb-3" min-height: 10vh>
+                        <div class="card-header">Are you sure you want to delete the task?</div>
+                        <div class="card-body text-secondary" id="cardbody">
 
+                            <!-- <h5 class="card-title">Secondary card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
                         </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-light" id="modaldetebtn" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-calendar-xmark"></i> Delete</button>
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal"><i
+                                class="fa-solid fa-rectangle-xmark"></i> Close
+                        </button>
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-                crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-                integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-                crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-                integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
-                crossorigin="anonymous"></script>
-            <script src="./assets/app.js"></script>
+ 
+    
+
+      <footer class="text-center text-md-start" style="background-color: rgba(19, 38, 79);">
+        <div class="container d-flex justify-content-center py-3">
+          <button type="button" class="btn btn-primary btn-md btn-floating mx-2" style="background-color: #54456b;">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+          <button type="button" class="btn btn-primary btn-md btn-floating mx-2" style="background-color: #54456b;">
+            <i class="fab fa-youtube"></i>
+          </button>
+          <button type="button" class="btn btn-primary btn-md btn-floating mx-2" style="background-color: #54456b;">
+            <i class="fab fa-instagram"></i>
+          </button>
+          <button type="button" class="btn btn-primary btn-md btn-floating mx-2" style="background-color: #54456b;">
+            <i class="fab fa-twitter"></i>
+          </button>
+        </div>
+    
+        <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright:
+            <a class="text-white" href="" style="text-decoration: none;"> To do List</a>
+          </div>
+          <!-- Copyright -->
+      </footer>
+
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+    <script src="./assets/app.js"></script>
 </body>
+
 
 </html>
