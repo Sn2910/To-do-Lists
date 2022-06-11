@@ -5,6 +5,19 @@ let addtaskbtn = document.getElementById('addtaskbtn')
 let commentBtn = document.getElementById("comment-btn")
 let taskDate = document.getElementById('task-date')
 let savetaskbtn = document.getElementById('savetask')
+let addTaskModalBody = document.querySelector('#addTask .modal-body')
+
+
+function checkKey(){
+  console.log('test') 
+  const errors = [...document.querySelectorAll('#addTask .invalid-feedback')].filter((element)=>{return getComputedStyle(element, null).display ==='block'}).length
+  if( errors){
+    addtaskbtn.disabled = true;
+  } else {
+    addtaskbtn.disabled = false;
+  }
+}
+addTaskModalBody.addEventListener('keydown', checkKey )
 
 addtaskbtn.addEventListener("click", function () {
 
