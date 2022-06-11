@@ -5,6 +5,7 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+  position: relative;
 }
 
 .header-text{
@@ -15,6 +16,17 @@ min-height: 50vh;
 background-color:rgb(255,255,255, 0.5);
 --bs-card-cap-padding-x: 0.5rem;
 
+}
+#alert-msg {
+  position: absolute;
+  right: 1rem;
+  top: 0.2rem;
+  padding: 0.7rem  ;
+  color:antiquewhite;
+  background-color: rgba(19, 38, 79);
+  border: none;
+  visibility: hidden;
+ transition: visibility 3s linear;
 
 }
 .card-header{

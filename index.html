@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    <!-- Alert -->
+    <div class="alert alert-success" role="alert" id="alert-msg" style="">
+     
+      </div>
     <div class="container-fluid">
         <div class="container">
             <div class="row mt-3 mb-3 text-center">
@@ -235,7 +239,7 @@
                 </form>
                 <div class="modal-footer">
                     <input type="hidden" id="saveindex">
-                    <button type="button" class="btn btn-outline-light" id="savetask" data-bs-dismiss="modal"><i
+                    <button type="button" class="btn btn-outline-light" id="savetask" data-bs-dismiss="modal" disabled><i
                             class="fa-solid fa-floppy-disk"></i> Save</button>
 
                     <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal"><i
@@ -256,14 +260,21 @@
                 <div class="modal-body">
                     <form>
 
-                        <div class="form-group mb-3">
+                        <div class="form-group was-validated mb-3">
                             <label for="task-description">Comment</label>
-                            <textarea class="form-control" id="comment-text" rows="3"></textarea>
+                            <textarea class="form-control" id="comment-text" rows="3" onblur="checkKeyComment()" required></textarea>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                Please provide valid Comment
+                            </div>
                         </div>
+                        
                     </form>
                     <div class="modal-footer">
                         <button type="button" id="comment-btn" onclick="" class="btn btn-outline-light "
-                            data-bs-toggle="modal" data-bs-target="#editTask"><i class="fa-solid fa-circle-plus"></i>
+                            data-bs-toggle="modal" data-bs-target="#editTask" disabled><i class="fa-solid fa-circle-plus"></i>
                             Add</button>
                         <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal"><i
                                 class="fa-solid fa-rectangle-xmark"></i> Close</button>

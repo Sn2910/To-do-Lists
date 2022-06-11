@@ -7,6 +7,22 @@ let taskDate = document.getElementById('task-date')
 let savetaskbtn = document.getElementById('savetask')
 let addTaskModalBody = document.querySelector('#addTask .modal-body')
 let editTaskModalBody = document.querySelector('#editTask .modal-body')
+let commentModalBody = document.querySelector('#addComment .modal-body')
+let popUpMsg = document.querySelector('#alert-msg')
+
+
+function showPopUp(text){
+  popUpMsg.innerHTML = `<h4>Success!</h4>
+  <p>You have successfully ${text}</p>`
+  
+	popUpMsg.style.visibility= 'visible';
+}
+function ClosePopUp(){
+	popUpMsg.style.visibility="hidden";
+}
+
+
+
 
 function checkKeyAdd(){
   console.log('test') 
@@ -29,6 +45,17 @@ function checkKeyEdit(){
   }
 }
 editTaskModalBody.addEventListener('keydown', checkKeyEdit )
+
+function checkKeyComment(){
+  console.log('test') 
+  const errors = [...document.querySelectorAll('#addComment .invalid-feedback')].filter((element)=>{return getComputedStyle(element, null).display ==='block'}).length
+  if(errors){
+    commentBtn.disabled = true;
+  } else {
+    commentBtn.disabled = false;
+  }
+}
+commentModalBody.addEventListener('keydown', checkKeyComment )
 
 addtaskbtn.addEventListener("click", function () {
 
@@ -61,6 +88,11 @@ addtaskbtn.addEventListener("click", function () {
   taskTitle.value = ''
   taskDescription.value = ''
 
+  showContent();
+
+  showPopUp('Added a new Task');
+  let timeOut = setTimeout(ClosePopUp,3000);
+  
   showContent();
 })
 
@@ -135,12 +167,12 @@ function buttcom(index){
   let taskObj = JSON.parse(webtask)
   let commentText = document.getElementById('comment-text');
   let taskObjSave = taskObj[index].comment
-  console.log('i am tsk' +taskObjSave)
+  /* console.log('i am tsk' +taskObjSave) */
   taskObjSave.push(commentText.value)
   console.log(taskObj.comment)
   console.log(commentText.value)
   localStorage.setItem("localtask", JSON.stringify(taskObj));
-  
+  edit(index)
 }
 function edit(ind) {
   /* console.log(ind) */
