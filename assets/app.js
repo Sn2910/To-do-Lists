@@ -40,7 +40,7 @@ function checkKeyComment(){
     commentBtn.disabled = false;
   }
 }
-commentModalBody.addEventListener('keydown', checkKeyEdit )
+commentModalBody.addEventListener('keydown', checkKeyComment )
 
 addtaskbtn.addEventListener("click", function () {
 
@@ -142,12 +142,12 @@ function buttcom(index){
   let taskObj = JSON.parse(webtask)
   let commentText = document.getElementById('comment-text');
   let taskObjSave = taskObj[index].comment
-  console.log('i am tsk' +taskObjSave)
+  /* console.log('i am tsk' +taskObjSave) */
   taskObjSave.push(commentText.value)
   console.log(taskObj.comment)
   console.log(commentText.value)
   localStorage.setItem("localtask", JSON.stringify(taskObj));
-  
+  edit(index)
 }
 function edit(ind) {
   /* console.log(ind) */
