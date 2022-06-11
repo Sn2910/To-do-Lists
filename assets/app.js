@@ -52,15 +52,20 @@ addtaskbtn.addEventListener("click", function () {
     
     }
     taskObj.push(newObj);
-   /* swal("Task added successfully"); */
+   
     localStorage.setItem("localtask", JSON.stringify(taskObj));
     /*  console.log(localStorage) */
   }
+  /* swal("Task added successfully"); */
+ 
   taskTitle.value = ''
   taskDescription.value = ''
 
   showContent();
 })
+
+
+
 /* console.log(taskDateText)
 let taskDate = new Date(taskDateText); */
 
@@ -244,7 +249,9 @@ function showdeleteTask(index) {
 
 
 
-/* 
-const cardBox = document.getElementById('cardBox')
-const cardContainer = document.getElementsByClassName('card-body"')
-cardBox.addEventListener('dragstart', ()=>) */
+
+/* const cardContainer = document.querySelector('.card')
+const cardTask = document.querySelectorAll('.card-task')
+cardTask.addEventListener('dragstart', ()=>{
+
+}) */
