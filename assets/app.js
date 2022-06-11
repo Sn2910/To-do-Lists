@@ -123,7 +123,7 @@ function showContent() {
   taskDone.innerHTML =''
   taskObj.forEach((val, index) => {
     
-    taskArrayElemenet = `<div class="card-task mt-3" draggable = "true">
+    taskArrayElemenet = `<div class="card-task mt-3">
     <div class="card-header"><i class="fa-solid fa-calendar-days"><b>${val.time}</b></i><i class="fa-solid fa-arrow-right-arrow-left"><b>${val.status}</b></i><i class="fa-solid fa-comment"><b>${val.comment.length}</b></i></div>
     <div class="card-body"><b>Title: </b>${val.title}<br><b>Description: </b>${val.decr}</div>
     <div class="card-footer text-end">
@@ -289,12 +289,4 @@ function showdeleteTask(index) {
 
 
 
- /* const cardContainer = document.querySelectorAll('.card')
-const cardTask = document.querySelectorAll('.card-task')
-
-cardTask.forEach((card1)=>{
-  card1.
-})
-cardTask.addEventListener('dragstart', ()=>{
-
-}) */
+ 
