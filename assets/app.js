@@ -2,67 +2,9 @@ let taskTitle = document.getElementById('task-title')
 let taskStatus = document.getElementById('task-status')
 let taskDescription = document.getElementById('task-description')
 let addtaskbtn = document.getElementById('addtaskbtn')
- let commentBtn = document.getElementById("comment-btn")
+let commentBtn = document.getElementById("comment-btn")
 let taskDate = document.getElementById('task-date')
-
-/* console.log(taskDateText)
-let taskDate = new Date(taskDateText); */
-function makeTaskHtml(val,index){
-return `<div class="card-task mt-3" id= "cardBox"draggable = "true">
-<div class="card-header"><i class="fa-solid fa-calendar-days"> <b>${val.time}</b></i><i class="fa-solid fa-arrow-right-arrow-left"><b>${val.status}</b></i><i class="fa-solid fa-comment"><b>${val.comment.length}</b></i></div>
-<div class="card-body"><b>Title: </b>${val.title}<br><b>Description: </b>${val.decr}</div>
-<div class="card-footer text-end">
-    <button type="button" class="btn btn-outline-light id='${index}' "onclick="edit(${index})" data-bs-toggle="modal"
-        data-bs-target="#editTask">
-        <i class="fa-solid fa-pen"></i>Edit
-    </button>
-    <button type="button" class="btn btn-delete btn-outline-light"" onclick="showdeleteTask(${index})" id="deleteTaskbtn" data-bs-toggle="modal"
-        data-bs-target="#deleteTask">
-        <i class="fa-solid fa-calendar-xmark"></i>Delete
-    </button>
-</div>
-</div>`
-}
-
-function showContent() {
-
-  let webtask = localStorage.getItem("localtask");
-  if (webtask == null) {
-    taskObj = [];
-  }
-  else {
-    taskObj = JSON.parse(webtask);
-  }
-  
-/*   let taskArrayElemenet = '' */
-  let addTaskList = document.getElementById('addTaskList')
-  let progressTaskListElement = document.getElementById('progressTaskList')
-  let completedTaskListElement = document.getElementById('completedTaskList')
-  addTaskList.innerHTML =''
-  progressTaskListElement.innerHTML  =''
-  completedTaskListElement.innerHTML =''
-  
-  /*  let dt = new Date() */
-  taskObj.forEach((val, index) => {
-    /* taskStatusVal = taskStatus.value */
-    /* console.log(index) */
-    if(val.status ===  "todo"){
-      addTaskList.innerHTML += makeTaskHtml(val,index)
-    }else if(val.status ===  "progress"){
-      progressTaskListElement.innerHTML  += makeTaskHtml(val, index)
-    }else if(val.status ===  "done"){
-      completedTaskListElement.innerHTML += makeTaskHtml(val, index)
-     }
-  
-
-  })
-
-
-
-}
-
-showContent("all");
-
+let savetaskbtn = document.getElementById('savetask')
 
 addtaskbtn.addEventListener("click", function () {
 
@@ -95,8 +37,70 @@ addtaskbtn.addEventListener("click", function () {
 
   showContent();
 })
+/* console.log(taskDateText)
+let taskDate = new Date(taskDateText); */
 
-/* edit part start */
+
+function showContent() {
+  
+  let webtask = localStorage.getItem("localtask");
+  if (webtask == null) {
+    taskObj = [];
+  }
+  else {
+    taskObj = JSON.parse(webtask);
+  }
+  
+  let addTaskList = document.getElementById('addTaskList');
+  let inProgress = document.getElementById('con-progress');
+  let taskDone = document.getElementById('con-done');
+  addTaskList.innerHTML=''
+  inProgress.innerHTML =''
+  taskDone.innerHTML =''
+  taskObj.forEach((val, index) => {
+    
+    taskArrayElemenet = `<div class="card mt-3">
+    <div class="card-header"><i class="fa-solid fa-calendar-days">${val.time}</i><i class="fa-solid fa-arrow-right-arrow-left"></i>${val.status}<i class="fa-solid fa-comment">${val.comment.length}</i></div>
+    <div class="card-body"><h6>${val.title}</h6><p>${val.decr}</p></div>
+    <div class="card-footer text-center">
+        <button type="button" class="btn btn-outline-light id='${index}' " onclick="edit(${index})" data-bs-toggle="modal"
+            data-bs-target="#editTask">
+            <i class="fa-solid fa-pen"></i> Edit
+        </button>
+        <button type="button" class="btn btn-delete btn-outline-light" onclick="showdeleteTask(${index})" id="deleteTaskbtn" data-bs-toggle="modal"
+            data-bs-target="#deleteTask">
+            <i class="fa-solid fa-calendar-xmark"></i> Delete
+        </button>
+    </div>
+</div>`
+listmaker(index)
+
+  })
+  /* console.log('show status' +taskObj[index].status) */
+  /* addTaskList.innerHTML = taskArrayElemenet; */
+ 
+  function listmaker(ind){
+   
+    console.log('show status' +taskObj[ind].status) 
+    if (taskObj[ind].status === 'todo'){
+     
+      addTaskList.innerHTML += taskArrayElemenet;
+      
+    }else if (taskObj[ind].status === 'progress'){
+      inProgress.innerHTML += taskArrayElemenet;
+      
+    }else {
+      taskDone.innerHTML += taskArrayElemenet;
+      
+    }
+    taskArrayElemenet = ''
+    }
+/* showContent("all"); */
+taskArrayElemenet = ''
+}
+
+
+
 function buttcom(index){
   let webtask = localStorage.getItem("localtask");
   let taskObj = JSON.parse(webtask)
@@ -136,46 +140,41 @@ function edit(ind) {
     } 
   savetaskbtn.onclick= ()=> {
     save(ind)
-   
-
+    showContent();
   }
   commentBtn.onclick = () =>{
     
     buttcom(ind)
     showContent();
-
   }
 
   /* commentBtn.addEventListener('click', */
-  showContent();
-  
+  /* showContent(); */
 }
  /* Save Task Buttun start */
-let savetaskbtn = document.getElementById('savetask')
+
 
 /* savetaskbtn.addEventListener("click",  */
 function save(ind) {
   let webtask = localStorage.getItem("localtask");
   let taskObj = JSON.parse(webtask)
-  let saveindex = document.getElementById('saveindex').value
+  let saveindex = document.getElementById('saveindex').value;
   let timeTable = document.getElementById('task-date-edit')
   let editTitle = document.getElementById('edit-title')
   let editStatus = document.getElementById('edit-status')
   let editDescription = document.getElementById('edit-description')
-  
-
   let edittaskbtn = document.getElementById('editTask')
-  let commentTxt = taskObj[ind].comment
+  let commentTxt = taskObj[ind].comment;
   console.log(commentTxt)
   
   taskObj[ind] = { 'title': editTitle.value, 'status': editStatus.value, 'decr': editDescription.value, 'time': timeTable.value, 'comment': commentTxt }
   localStorage.setItem("localtask", JSON.stringify(taskObj));
 
-  showContent()
+  
 
 }
 
-
+showContent()
 /* Comment Text */
 /* commentBtn.addEventListener('click',function (){
   let webtask = localStorage.getItem("localtask");
@@ -201,7 +200,7 @@ function showdeleteTask(index) {
   let webtask = localStorage.getItem("localtask");
   let taskObj = JSON.parse(webtask)
   console.log(index)
-   taskTitleVal = console.log("Title: "+taskObj[index].title)
+  taskTitleVal = console.log("Title: "+taskObj[index].title)
   taskStatusVal = console.log("Status: "+taskObj[index].status)
   taskDescriptionVal =console.log("Description: "+taskObj[index].decr)
 
@@ -216,7 +215,7 @@ function showdeleteTask(index) {
     showContent()
   })
 
-
+  
 }
 
 
