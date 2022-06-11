@@ -59,9 +59,9 @@ function showContent() {
   taskDone.innerHTML =''
   taskObj.forEach((val, index) => {
     
-    taskArrayElemenet = `<div class="card mt-3">
-    <div class="card-header"><i class="fa-solid fa-calendar-days">${val.time}</i><i class="fa-solid fa-arrow-right-arrow-left"></i>${val.status}<i class="fa-solid fa-comment">${val.comment.length}</i></div>
-    <div class="card-body"><h6>${val.title}</h6><p>${val.decr}</p></div>
+    taskArrayElemenet = `<div class="card-task mt-3">
+    <div class="card-header"><i class="fa-solid fa-calendar-days"><b>${val.time}</b></i><i class="fa-solid fa-arrow-right-arrow-left"><b>${val.status}</b></i><i class="fa-solid fa-comment"><b>${val.comment.length}</b></i></div>
+    <div class="card-body"><b>Title: </b>${val.title}<br><b>Description: </b>${val.decr}</div>
     <div class="card-footer text-center">
         <button type="button" class="btn btn-outline-light id='${index}' " onclick="edit(${index})" data-bs-toggle="modal"
             data-bs-target="#editTask">
