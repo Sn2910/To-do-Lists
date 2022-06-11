@@ -6,18 +6,29 @@ let commentBtn = document.getElementById("comment-btn")
 let taskDate = document.getElementById('task-date')
 let savetaskbtn = document.getElementById('savetask')
 let addTaskModalBody = document.querySelector('#addTask .modal-body')
+let editTaskModalBody = document.querySelector('#editTask .modal-body')
 
-
-function checkKey(){
+function checkKeyAdd(){
   console.log('test') 
   const errors = [...document.querySelectorAll('#addTask .invalid-feedback')].filter((element)=>{return getComputedStyle(element, null).display ==='block'}).length
-  if( errors){
+  if(errors){
     addtaskbtn.disabled = true;
   } else {
     addtaskbtn.disabled = false;
   }
 }
-addTaskModalBody.addEventListener('keydown', checkKey )
+addTaskModalBody.addEventListener('keydown', checkKeyAdd )
+
+function checkKeyEdit(){
+  console.log('test') 
+  const errors = [...document.querySelectorAll('#editTask .invalid-feedback')].filter((element)=>{return getComputedStyle(element, null).display ==='block'}).length
+  if(errors){
+    savetaskbtn.disabled = true;
+  } else {
+    savetaskbtn.disabled = false;
+  }
+}
+editTaskModalBody.addEventListener('keydown', checkKeyEdit )
 
 addtaskbtn.addEventListener("click", function () {
 
@@ -41,7 +52,7 @@ addtaskbtn.addEventListener("click", function () {
     
     }
     taskObj.push(newObj);
-   swal("Task added successfully");
+   /* swal("Task added successfully"); */
     localStorage.setItem("localtask", JSON.stringify(taskObj));
     /*  console.log(localStorage) */
   }
