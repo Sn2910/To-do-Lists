@@ -15,10 +15,11 @@ function showPopUp(text){
   popUpMsg.innerHTML = `<h4>Success!</h4>
   <p>You have successfully ${text}</p>`
   
-	popUpMsg.style.visibility= 'visible';
+/* 	popUpMsg.style.visibility= 'visible'; */
+  popUpMsg.classList.remove('hidden')
 }
 function ClosePopUp(){
-	popUpMsg.style.visibility="hidden";
+  popUpMsg.classList.add('hidden')
 }
 
 
@@ -93,7 +94,7 @@ addtaskbtn.addEventListener("click", function () {
   showPopUp('Added a new Task');
   let timeOut = setTimeout(ClosePopUp,3000);
   
-  showContent();
+  
 })
 
 
